@@ -1,0 +1,19 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Analytics {
+  createdAt DateTime  @default(now())
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  likes     Int?
+  postId    String?
+  shares    Int?
+  timestamp DateTime?
+  updatedAt DateTime  @updatedAt
+  views     Int?
+}
